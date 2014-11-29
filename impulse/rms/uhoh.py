@@ -6,7 +6,7 @@ from lsl.misc.mathutil import to_dB
 from matplotlib import pyplot as plt
 from datetime import datetime
 
-file = open('/u/data/leap/observations/056777_000085153','rb')
+file = open('/u/data/leap/observations/056777_000085151','rb')
 
 frame1 = drx.readFrame(file)
 frame2 = drx.readFrame(file)
@@ -61,7 +61,7 @@ print str(frame4.data.iq.real[:])
 
 print "CHANGE TO HF OFF"
 
-file1 = open('/u/data/leap/observations/056777_000085153','rb')
+file1 = open('/u/data/leap/observations/056777_000085152','rb')
 
 
 frame1 = drx.readFrame(file1)
