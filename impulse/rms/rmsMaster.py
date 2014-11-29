@@ -11,34 +11,37 @@ from matplotlib import pyplot as plt
 #therefore 31.25 frames fit in the cache. Heavy lifting in thsi case is dot product of identical array, so assume ideal frame size of 15, with wiggle room built in.
 chunks = 15
 # how many chunks to plot
-howManyChunks = (60*30)/0.003135
+howManyChunks = 100 
 #fileArr is a list of four files, with the following order. HFON->HFOFF->LFON->LFOff
-fileArr = [ 'file1', 'file2', 'file3', 'file4' ]
-
-
-fig = plt.figure()
-ax = fig.gca()
-ax.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
-ax.set_ylabel('ADC Magnitude')
+fileArr = [ 'file1' ]
 
 
 hf_on = rmsIterator(fileArr[0],chunks)
 hf_on.iterate(howManyChunks)
 
-hf_off = rmsIterator(fileArr[1],chunks)
-hf_off.iterate(howManyChunks)
+fig = plt.figure()
+ax1 = fig.add_subplot(221)
+ax1.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
+ax1.set_ylabel('ADC Magnitude')
+ax2 = fig.add_subplot(222)
+ax2.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
+ax2.set_ylabel('ADC Magnitude')
+ax3 = fig.add_subplot(223)
+ax3.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
+ax3.set_ylabel('ADC Magnitude')
+ax4 = fig.add_subplot(224)
+ax4.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
+ax4.set_ylabel('ADC Magnitude')
 
-lf_on = rmsIterator(fileArr[2],chunks)
-lf_on.iterate(howManyChunks)
 
-lf_off = rmsIterator(fileArr[3],chunks)
-lf_off.iterate(howManyChunks)
-
-ax.plot(hf_on.returnData[:],label='HF On')
-ax.plot(hf_off.returnData[:],label='HF Off')
-ax.plot(lf_on.returnData[:],label='LF On')
-ax.plot(lf_off.returnData[:],label='LF Off')
+ax1.plot(hf_on.returnDataT1P0[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune1/1e6))+':P0'))
+ax2.plot(hf_on.returnDataT1P1[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune1/1e6))+':P1')
+ax3.plot(hf_on.returnDataT2P0[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune2/1e6))+':P0')
+ax4.plot(hf_on.returnDataT2P1[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune2/1e6))+':P1')
 
 
-ax.legend(loc='best')
-fig.savefig('/u/home/qwofford/figures/rmsIteratorOutput/rms.png')
+ax1.legend(loc='best')
+ax2.legend(loc='best')
+ax3.legend(loc='best')
+ax4.legend(loc='best')
+fig.savefig('/u/home/qwofford/figures/rmsIteratorOutput/rmsWIP.png')
