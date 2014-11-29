@@ -34,10 +34,10 @@ ax4.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
 ax4.set_ylabel('ADC Magnitude')
 
 
-ax1.plot(hf_on.returnDataT1P0[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune1/1e6))+'\:P0')
-ax2.plot(hf_on.returnDataT1P1[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune1/1e6))+'\:P1')
-ax3.plot(hf_on.returnDataT2P0[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune2/1e6))+'\:P0')
-ax4.plot(hf_on.returnDataT2P1[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune2/1e6))+'\:P1')
+ax1.plot(hf_on.returnDataT1P0[:],label='B'+str(hf_on.beam)+':T'+str("%.1f" % (hf_on.tune1/1e6))+':P0')
+ax2.plot(hf_on.returnDataT1P1[:],label='B'+str(hf_on.beam)+':T'+str("%.1f" % (hf_on.tune1/1e6))+':P1')
+ax3.plot(hf_on.returnDataT2P0[:],label='B'+str(hf_on.beam)+':T'+str("%.1f" % (hf_on.tune2/1e6))+':P0')
+ax4.plot(hf_on.returnDataT2P1[:],label='B'+str(hf_on.beam)+':T'+str("%.1f" % (hf_on.tune2/1e6))+':P1')
 
 
 ax1.legend(loc='best')

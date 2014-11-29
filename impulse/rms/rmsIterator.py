@@ -12,13 +12,13 @@ from datetime import datetime
 class rmsIterator:
     def __init__(self,file,chunkSizeinFrames):
         #(NEXT STEP) Implement class def with these variables as parameters
-        self.beam=None
+        self.beam=69
         self.returnDataT1P0=[]
         self.returnDataT1P1=[]
-        self.tune1=None
+        self.tune1=123
         self.returnDataT2P0=[]
         self.returnDataT2P1=[]
-        self.tune2=None
+        self.tune2=456
         self.chunkArrayT1P0=[]
         self.chunkArrayT1P1=[]
         self.chunkArrayT2P0=[]
@@ -56,6 +56,10 @@ class rmsIterator:
             self.chunkArrayT2P1.extend(self.theOtherFrame.data.iq.real[:])
             print "Current T2P1 timestamp: " + str("%.9f" % self.theOtherFrame.getTime())
             i += 1
+        #Store header info for labeling plots
+        self.beam, self.dontCare, self.irrelevant= self.thisFrame.parseID()
+        self.tune1=self.thisFrame.getCentralFreq()
+        self.tune2=self.anotherFrame.getCentralFreq()
         print 'Processing this many frames as a chunk: ' + str(-1+len(self.chunkArrayT1P0)/4096)
         numpyArrT1P0 = numpy.array(self.chunkArrayT1P0)
         numpyArrT1P1 = numpy.array(self.chunkArrayT1P1)
