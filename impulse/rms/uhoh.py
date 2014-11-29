@@ -61,13 +61,13 @@ print str(frame4.data.iq.real[:])
 
 print "CHANGE TO HF OFF"
 
-file = open('/u/data/leap/observations/056777_000085153','rb')
+file1 = open('/u/data/leap/observations/056777_000085153','rb')
 
 
-frame1 = drx.readFrame(file)
-frame2 = drx.readFrame(file)
-frame3 = drx.readFrame(file)
-frame4 = drx.readFrame(file)
+frame1 = drx.readFrame(file1)
+frame2 = drx.readFrame(file1)
+frame3 = drx.readFrame(file1)
+frame4 = drx.readFrame(file1)
 
 b1, t1, p1 = frame1.parseID()
 b2, t2, p2 = frame2.parseID()
