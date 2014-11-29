@@ -11,9 +11,9 @@ from matplotlib import pyplot as plt
 #therefore 31.25 frames fit in the cache. Heavy lifting in thsi case is dot product of identical array, so assume ideal frame size of 15, with wiggle room built in.
 chunks = 15
 # how many chunks to plot
-howManyChunks = 100 
+howManyChunks = 10 
 #fileArr is a list of four files, with the following order. HFON->HFOFF->LFON->LFOff
-fileArr = [ 'file1' ]
+fileArr = [ '/u/data/leap/observations/056777_000085153' ]
 
 
 hf_on = rmsIterator(fileArr[0],chunks)
@@ -34,10 +34,10 @@ ax4.set_xlabel('Chunk # ('+str(0.000209*chunks)+' Seconds)')
 ax4.set_ylabel('ADC Magnitude')
 
 
-ax1.plot(hf_on.returnDataT1P0[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune1/1e6))+':P0'))
-ax2.plot(hf_on.returnDataT1P1[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune1/1e6))+':P1')
-ax3.plot(hf_on.returnDataT2P0[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune2/1e6))+':P0')
-ax4.plot(hf_on.returnDataT2P1[:],label='B'+str(hf_on.beam)+':T'+str((hf_on.tune2/1e6))+':P1')
+ax1.plot(hf_on.returnDataT1P0[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune1/1e6))+'\:P0')
+ax2.plot(hf_on.returnDataT1P1[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune1/1e6))+'\:P1')
+ax3.plot(hf_on.returnDataT2P0[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune2/1e6))+'\:P0')
+ax4.plot(hf_on.returnDataT2P1[:],label='B'+str(hf_on.beam)+'\:T'+str((hf_on.tune2/1e6))+'\:P1')
 
 
 ax1.legend(loc='best')

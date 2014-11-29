@@ -33,7 +33,10 @@ class rmsIterator:
         self.timer = datetime.now()
         #Note: Every time readframe is used, the open file is incremented by the frame size
         i = 0
-        self.chunkArray=[]
+        self.chunkArrayT1P0=[]
+        self.chunkArrayT1P1=[]
+        self.chunkArrayT2P0=[]
+        self.chunkArrayT2P1=[]
         while i <= self.chunkSizeinFrames:
             #T1P0 read
             self.thisFrame = drx.readFrame(self.input)
@@ -45,15 +48,15 @@ class rmsIterator:
             self.theOtherFrame = drx.readFrame(self.input)
             #Store the relevent data
             self.chunkArrayT1P0.extend(self.thisFrame.data.iq.real[:])
-            print "Current T1P0 timestamp: " + str(self.thisFrame.getTime())
+            print "Current T1P0 timestamp: " + str("%.9f" % self.thisFrame.getTime())
             self.chunkArrayT1P1.extend(self.thatFrame.data.iq.real[:])
-            print "Current T1P1 timestamp: " + str(self.thatFrame.getTime())
+            print "Current T1P1 timestamp: " + str("%.9f" % self.thatFrame.getTime())
             self.chunkArrayT2P0.extend(self.anotherFrame.data.iq.real[:])
-            print "Current T2P0 timestamp: " + str(self.anotherFrame.getTime())
+            print "Current T2P0 timestamp: " + str("%.9f" % self.anotherFrame.getTime())
             self.chunkArrayT2P1.extend(self.theOtherFrame.data.iq.real[:])
-            print "Current T2P1 timestamp: " + str(self.theOtherFrame.getTime())
+            print "Current T2P1 timestamp: " + str("%.9f" % self.theOtherFrame.getTime())
             i += 1
-        print 'Processing this many frames as a chunk: ' + str(-1+len(self.chunkArray)/4096)
+        print 'Processing this many frames as a chunk: ' + str(-1+len(self.chunkArrayT1P0)/4096)
         numpyArrT1P0 = numpy.array(self.chunkArrayT1P0)
         numpyArrT1P1 = numpy.array(self.chunkArrayT1P1)
         numpyArrT2P0 = numpy.array(self.chunkArrayT2P0)
