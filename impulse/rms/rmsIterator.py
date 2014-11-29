@@ -12,13 +12,13 @@ from datetime import datetime
 class rmsIterator:
     def __init__(self,file,chunkSizeinFrames):
         #(NEXT STEP) Implement class def with these variables as parameters
-        self.beam=69
+        self.beam=-1
         self.returnDataT1P0=[]
         self.returnDataT1P1=[]
-        self.tune1=123
+        self.tune1=-123
         self.returnDataT2P0=[]
         self.returnDataT2P1=[]
-        self.tune2=456
+        self.tune2=-123
         self.chunkArrayT1P0=[]
         self.chunkArrayT1P1=[]
         self.chunkArrayT2P0=[]
