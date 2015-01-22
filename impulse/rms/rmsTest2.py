@@ -6,7 +6,7 @@ timer = datetime.now()
 
 #rmsMaster takes: inputpath, outputpath, framesperchunk, and totalchunks for init parameters
 #hf_on = rmsMaster('/u/data/leap/observations/056777_000085153', '/u/home/qwofford/figures/rmsIteratorOutput/04302014_hf_on.png',15,650000)
-hf_off = rmsMaster('/u/data/leap/observations/056777_000085150', '/u/data/qwofford/figures/rmsIteratorOutput/04302014_hf_off.png',15,650000)
+hf_off = rmsMaster('/u/data/leap/observations/056777_000085150', '/u/data/qwofford/figures/rmsIteratorOutput/04302014_hf_off.png',15,65000)
 #lf_on = rmsMaster('/u/data/leap/observations/056777_000085151', '/u/home/qwofford/figures/rmsIteratorOutput/04302014_lf_on.png',15,650000)
 #lf_off = rmsMaster('/u/data/leap/observations/056777_000085152', '/u/home/qwofford/figures/rmsIteratorOutput/04302014_lf_off.png',15,650000)
 
