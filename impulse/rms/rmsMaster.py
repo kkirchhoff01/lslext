@@ -1,3 +1,4 @@
+import sys
 from rmsIterator import rmsIterator
 import numpy
 import math
@@ -24,7 +25,7 @@ class rmsMaster:
     def compute(self):
         self.rmsAnalysis = rmsIterator(self.fileInput,self.framesPerChunk)
         self.rmsAnalysis.iterate(self.howManyChunks)
-
+        print "I'm trying to compute."
         fig = plt.figure()
 
         ax1 = fig.add_subplot(221)
