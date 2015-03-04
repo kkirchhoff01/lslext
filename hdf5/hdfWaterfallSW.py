@@ -12,6 +12,8 @@ $LastChangedDate: 2014-05-08 15:38:03 -0700 (Thu, 08 May 2014) $
 
 import os
 import sys
+sys.path.append("/u/data/swissel/software/lsl")
+sys.path.append("/u/data/swissel/software/lsl/Commissioning/DRX/HDF5")
 import h5py
 import math
 import numpy
@@ -627,6 +629,7 @@ def main(args):
 	beampols = tunepol
 
 	# Offset in frames for beampols beam/tuning/pol. sets
+	inoffset = config['offset']
 	offset = int(config['offset'] * srate / 4096 * beampols)
 	offset = int(1.0 * offset / beampols) * beampols
 	fh.seek(offset*drx.FrameSize, 1)
@@ -765,7 +768,7 @@ def main(args):
 	outname = os.path.split(filename)[1]
 	outname = os.path.splitext(outname)[0]
         if( config['return'] == 'FFT' ):
-		outname = '%s-%d-waterfall-complex.hdf5' %(outname, config['offset'])
+		outname = '%s-%d-waterfall-complex.hdf5' %(outname, inoffset)
 	else:
 		outname = '%s-waterfall.hdf5' % outname
 	

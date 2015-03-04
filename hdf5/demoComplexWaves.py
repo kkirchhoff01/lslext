@@ -20,7 +20,7 @@ def getDoubleSidedFFT(freq, ft):
 	return bfreq, bft
 
 #fname = '/u/data/leap/hdf/056855_000082430-waterfall-complex.hdf5'
-fname = '/u/data/leap//rfi/hdf_filt/056777_000085150-0-waterfall-complex.hdf5'
+fname = '/u/data/leap/hdf/056777_000085150-0-waterfall-complex.hdf5'
 drxfile = h5py.File(fname, 'r')
 # the data are organized by observation (one per file), tuning (two per file).
 # each tuning has a freq, (Xmag, Xphase)->magnitude and phase of complex fft
@@ -74,10 +74,11 @@ for ichunk in range(4):
 	wv = numpy.fft.ifft(numpy.fft.ifftshift(ft))
 	tm = numpy.arange(len(wv))*1./samprate*1e6 # in micro-seconds 
 	off = numpy.nanmax(abs(wv))
-	print wv
-	print off
+
 	pyp.figure(4)
+	pyp.subplot(2,2,ichunk+1)
 	pyp.plot(tm, wv+off, label='original')
+	pyp.legend(loc='upper left')
 
 	# error checking & filtering
 	filters = [[7.1076e7,7.10827e7], [7.23894e7, 7.24036e7]]
@@ -102,20 +103,20 @@ for ichunk in range(4):
 	pyp.ylabel('ADC counts')
 	pyp.legend(loc='upper left')
 
-
-	pyp.figure(5)
-	pyp.subplot(2,2,ichunk+1)
-	famp = pd.Series(mod).dropna()
-	n,bins,patches = pyp.hist(famp, 30, normed=1, histtype='step')
-	pyp.clf()
+	#pyp.figure(5)
+	#pyp.subplot(2,2,ichunk+1)
+	#print "Fourier amplitudes ", mod
+	#famp = pd.Series(mod).dropna()
+	#n,bins,patches = pyp.hist(famp, 30, normed=1, histtype='step')
+	#pyp.clf()
 	#pyp.plot(bins[:-1], n)
-	x0 = [numpy.std(famp)]
-	print n, bins, patches
-	popt,pcov= optimization.curve_fit(rayleigh_func,bins[:-1],n/sum(n),x0)
-	print popt
-	print pcov
-	pyp.plot( bins[:-1], rayleigh_func(bins[:-1], popt[0]), label=str(popt[0]))
-	pyp.legend()
-	pyp.xlabel('Fourier Amplitudes')
+	#x0 = [numpy.std(famp)]
+	#print n, bins, patches
+	#popt,pcov= optimization.curve_fit(rayleigh_func,bins[:-1],n/sum(n),x0)
+	#print popt
+	#print pcov
+	#pyp.plot( bins[:-1], rayleigh_func(bins[:-1], popt[0]), label=str(popt[0]))
+	#pyp.legend()
+	#pyp.xlabel('Fourier Amplitudes')
 
 pyp.show()
