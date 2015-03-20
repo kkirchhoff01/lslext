@@ -4,7 +4,7 @@ import math
 from lsl.reader import drx
 from lsl.correlator import fx as fxc
 from lsl.misc.mathutil import to_dB
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from datetime import datetime
 
 #04302014run.txt  05022014run.txt  07172014run.txt  filelist.txt            MoonBounce2run.txt
@@ -84,6 +84,7 @@ class rmsIterator:
         self.returnDataT2P0.append(math.sqrt(numpy.dot(numpyArrT2P0,numpyArrT2P0)/(self.chunkSizeinFrames*4096)))
         self.returnDataT2P1.append(math.sqrt(numpy.dot(numpyArrT2P1,numpyArrT2P1)/(self.chunkSizeinFrames*4096)))
         #print 'Chunk block (T1P0 and T1P1 and T2P0 and T2P1) processing time: ' + str(datetime.now()-self.timer)
+
     def iterate(self, numberChunks):
         self.totalTime = datetime.now()
         j = 0

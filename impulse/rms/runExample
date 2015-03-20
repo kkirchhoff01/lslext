@@ -1,0 +1,3 @@
+python  histRunner.py /u/data/qwofford/scripts/lslext/impulse/rms/dataLinks/056952_000117775 /u/data/qwofford/scripts/lslext/figures/histIteratorOutput/056952_000117775.png 15 778352
+
+python  rmsRunner.py /u/data/qwofford/scripts/lslext/impulse/rms/dataLinks/056952_000117775 /u/data/qwofford/figures/rmsIteratorOutput/056952_000117775.png 15 778352
