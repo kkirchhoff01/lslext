@@ -28,17 +28,15 @@ else:
 	print 'Invalid arguments.'
 	exit()
 #Read template
-temp = []
-t = open('a3.txt','r')
-for line in t:
-	temp.append(float(line)/40)
-t.close()
+temp = np.fromfile(file='a3.txt', dtype = float, sep='\n')
+for t in temp:
+	t = t/40.0
 
 #Variable declaration
-realdata = [(0,0)] * 100
-imagdata = [(0,0)] * 100
-realmincorr = 0
-imagmincorr = 0
+realdata = np.array((100,100), dtype=float)#[(0,0)] * 100
+imagdata = np.array((100,100), dtype=float)#[(0,0)] * 100
+realmincorr = 0.0
+imagmincorr = 0.0
 fh = open(file, 'r');
 startTime = datetime.now()
 
@@ -60,6 +58,8 @@ for i in xrange(numFrames):
 	realcorr = np.correlate(frame.data.iq.real,temp,'same')
 	imagcorr = np.correlate(frame.data.iq.imag,temp,'same')
 	#Maximum correlation loops
+	'''
+	#This is horrible. Why did I do this?
 	for j in realcorr:
 		if abs(j) > realmincorr:
 			realdata.append((j,(i*4096)+realcount))
@@ -74,7 +74,7 @@ for i in xrange(numFrames):
 			imagdata.pop()
 			imagmincorr = abs(imagdata[len(imagdata)-1][0])
 		imagcount += 1
-
+	'''
 fh.close()
 endtime = str(datetime.now() - startTime)
 #Write the run time to log file
